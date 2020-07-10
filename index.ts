@@ -5,7 +5,9 @@ import * as awsx from "@pulumi/awsx";
 // Create an AWS resource (S3 Bucket)
 const names = [];
 for (let i = 0; i < 2; i++) {
-    const bucket = new aws.s3.Bucket(`my-bucket-${i}`);
+    const bucket = new aws.s3.Bucket(`my-bucket-${i}`, {
+        acl: "public-read",
+    });
     names.push(bucket.id);
 }
 
